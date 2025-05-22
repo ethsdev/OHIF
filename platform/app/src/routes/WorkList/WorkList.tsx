@@ -579,7 +579,8 @@ function WorkList({
                   onChangePage={onPageNumberChange}
                   onChangePerPage={onResultsPerPageChange}
                   currentPage={pageNumber}
-                  perPage={resultsPerPage}
+                  perPage={100}
+                  // perPage={resultsPerPage}
                 />
               </div>
             </div>

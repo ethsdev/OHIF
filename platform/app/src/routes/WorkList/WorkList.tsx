@@ -579,8 +579,7 @@ function WorkList({
                   onChangePage={onPageNumberChange}
                   onChangePerPage={onResultsPerPageChange}
                   currentPage={pageNumber}
-                  perPage={100}
-                  // perPage={resultsPerPage}
+                  perPage={resultsPerPage}
                 />
               </div>
             </div>
@@ -622,7 +621,7 @@ const defaultFilterValues = {
   sortBy: '',
   sortDirection: 'none',
   pageNumber: 1,
-  resultsPerPage: 25,
+  resultsPerPage: 100,
   datasources: '',
 };
 

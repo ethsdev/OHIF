@@ -54,7 +54,7 @@ const Select = ({
   noIcons = false,
   menuPlacement = 'auto',
   components = {},
-  value = [],
+  value,
 }) => {
   const _noIconComponents = {
     DropdownIndicator: () => null,
@@ -76,6 +76,8 @@ const Select = ({
       }
     });
   }
+
+  // console.log(value);
 
   return (
     <ReactSelect

@@ -20,7 +20,7 @@ const StudyListPagination = ({ onChangePage, currentPage, perPage, onChangePerPa
     { value: '50', label: '50' },
     { value: '100', label: '100' },
   ];
-  const [selectedRange, setSelectedRange] = useState(ranges.find(r => r.value === perPage));
+  const [selectedRange, setSelectedRange] = useState(ranges.find(r => Number(r.value) === perPage));
   const onSelectedRange = selectedRange => {
     setSelectedRange(selectedRange);
     onChangePerPage(selectedRange.value);

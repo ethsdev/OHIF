@@ -37,6 +37,30 @@ const toolbarButtons: Button[] = [
       groupId: 'MoreTools',
     },
   },
+  {
+    id: 'WindowLevel',
+    uiType: 'ohif.toolButtonList',
+    props: {
+      buttonSection: 'windowLevelSection',
+      groupId: 'WindowLevel',
+    },
+  },
+  {
+    id: 'ZoomGroup',
+    uiType: 'ohif.toolButtonList',
+    props: {
+      buttonSection: 'zoomSection',
+      groupId: 'ZoomGroup',
+    },
+  },
+  {
+    id: 'CineGroup',
+    uiType: 'ohif.toolButtonList',
+    props: {
+      buttonSection: 'cineSection',
+      groupId: 'CineGroup',
+    },
+  },
   // tool defs
   {
     id: 'Reset',
@@ -453,9 +477,10 @@ const toolbarButtons: Button[] = [
     id: 'Zoom',
     uiType: 'ohif.toolButton',
     props: {
-      type: 'tool',
+      // type: 'tool',
       icon: 'tool-zoom',
       label: 'Zoom',
+      tooltip: 'Zoom Tool',
       commands: setToolActiveToolbar,
       evaluate: 'evaluate.cornerstoneTool',
     },

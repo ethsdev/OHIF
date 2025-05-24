@@ -26,7 +26,7 @@ const StudyListFilter = ({
       ...sortingValues,
     });
   };
-  const isSortingEnabled = numOfStudies > 0 && numOfStudies <= 100;
+  const isSortingEnabled = numOfStudies > 0 && numOfStudies <= 1000;
 
   return (
     <React.Fragment>
@@ -73,7 +73,7 @@ const StudyListFilter = ({
                   className="mr-2"
                   data-cy={'num-studies'}
                 >
-                  {numOfStudies > 100 ? '>100' : numOfStudies}
+                  {numOfStudies > 1000 ? '>1000' : numOfStudies}
                 </Typography>
                 <Typography
                   variant="h6"
@@ -97,11 +97,11 @@ const StudyListFilter = ({
             isSortingEnabled={isSortingEnabled}
           />
         </div>
-        {numOfStudies > 100 && (
+        {numOfStudies > 1000 && (
           <div className="container m-auto">
             <div className="bg-primary-main rounded-b py-1 text-center text-base">
               <p className="text-white">
-                {t('Filter list to 100 studies or less to enable sorting')}
+                {t('Filter list to 1000 studies or less to enable sorting')}
               </p>
             </div>
           </div>

@@ -552,7 +552,7 @@ function WorkList({
         <ScrollArea>
           <div className="flex grow flex-col">
             <StudyListFilter
-              numOfStudies={pageNumber * resultsPerPage > 100 ? 101 : numOfStudies}
+              numOfStudies={pageNumber * resultsPerPage > 1000 ? 1001 : numOfStudies}
               filtersMeta={filtersMeta}
               filterValues={{ ...filterValues, ...defaultSortValues }}
               onChange={setFilterValues}

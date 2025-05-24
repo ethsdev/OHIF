@@ -92,14 +92,15 @@ function modeFactory({ modeConfiguration }) {
 
       toolbarService.addButtons(toolbarButtons);
       toolbarService.createButtonSection('primary', [
-        'MeasurementTools',
-        'Zoom',
         'Pan',
-        'TrackballRotate',
         'WindowLevel',
-        'Capture',
+        'ZoomGroup',
+        'MeasurementTools',
         'Layout',
+        'CineGroup',
         'Crosshairs',
+        'TrackballRotate',
+        'Capture',
         'MoreTools',
       ]);
 
@@ -107,12 +108,29 @@ function modeFactory({ modeConfiguration }) {
         'Length',
         'Bidirectional',
         'ArrowAnnotate',
+        'Angle',
+        'CobbAngle',
         'EllipticalROI',
         'RectangleROI',
         'CircleROI',
         'PlanarFreehandROI',
         'SplineROI',
         'LivewireContour',
+      ]);
+
+      toolbarService.createButtonSection('windowLevelSection', [
+        'invert',
+        'WindowLevelRegion',
+      ]);
+
+      toolbarService.createButtonSection('zoomSection', [
+        'Zoom',
+        'Magnify',
+      ]);
+
+      toolbarService.createButtonSection('cineSection', [
+        'Cine',
+        'StackScroll',
       ]);
 
       toolbarService.createButtonSection('moreToolsSection', [
@@ -122,18 +140,12 @@ function modeFactory({ modeConfiguration }) {
         'ImageSliceSync',
         'ReferenceLines',
         'ImageOverlayViewer',
-        'StackScroll',
-        'invert',
         'Probe',
-        'Cine',
-        'Angle',
-        'CobbAngle',
-        'Magnify',
         'CalibrationLine',
         'TagBrowser',
         'AdvancedMagnify',
         'UltrasoundDirectionalTool',
-        'WindowLevelRegion',
+
       ]);
 
       customizationService.setCustomizations({

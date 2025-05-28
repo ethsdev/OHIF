@@ -37,12 +37,29 @@ const toolbarButtons: Button[] = [
       groupId: 'MoreTools',
     },
   },
-  {
-    id: 'WindowLevel',
+  // {
+  //   id: 'WindowLevel',
+  //   uiType: 'ohif.toolButton',
+  //   props: {
+  //     icon: 'tool-zoom',
+  //     label: 'WindowLevel',
+  //     tooltip: 'WindowLeve Tool',
+  //     commands: setToolActiveToolbar,
+  //     evaluate: [
+  //       'evaluate.cornerstoneTool',
+  //       // {
+  //       //   name: 'evaluate.viewport.supported',
+  //       //   unsupportedViewportTypes: ['video'],
+  //       // },
+  //     ],
+  //   },
+  // },
+   {
+    id: 'WindowLevelGroup',
     uiType: 'ohif.toolButtonList',
     props: {
       buttonSection: 'windowLevelSection',
-      groupId: 'WindowLevel',
+      groupId: 'WindowLevelGroup',
     },
   },
   {
@@ -482,7 +499,13 @@ const toolbarButtons: Button[] = [
       label: 'Zoom',
       tooltip: 'Zoom Tool',
       commands: setToolActiveToolbar,
-      evaluate: 'evaluate.cornerstoneTool',
+      evaluate: [
+        'evaluate.cornerstoneTool',
+        {
+          name: 'evaluate.viewport.supported',
+          unsupportedViewportTypes: ['video'],
+        },
+      ],
     },
   },
   {

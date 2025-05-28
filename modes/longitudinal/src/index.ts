@@ -93,7 +93,7 @@ function modeFactory({ modeConfiguration }) {
       toolbarService.addButtons(toolbarButtons);
       toolbarService.createButtonSection('primary', [
         'Pan',
-        'WindowLevel',
+        'WindowLevelGroup',
         'ZoomGroup',
         'MeasurementTools',
         'Layout',
@@ -119,6 +119,7 @@ function modeFactory({ modeConfiguration }) {
       ]);
 
       toolbarService.createButtonSection('windowLevelSection', [
+        'WindowLevel',
         'invert',
         'WindowLevelRegion',
       ]);

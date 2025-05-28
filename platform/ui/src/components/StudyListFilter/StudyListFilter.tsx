@@ -28,6 +28,10 @@ const StudyListFilter = ({
   };
   const isSortingEnabled = numOfStudies > 0 && numOfStudies <= 1000;
 
+  console.log('isSortingEnabled', isSortingEnabled);
+  console.log('numOfStudies', numOfStudies);
+
+
   return (
     <React.Fragment>
       <div>

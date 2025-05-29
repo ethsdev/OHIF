@@ -161,6 +161,10 @@ yarn config set workspaces-experimental true
 yarn install
 ```
 
+#### Modification
+
+To change default capture pixel value, modify [here](https://github.com/OHIF/Viewers/blob/master/extensions/cornerstone/src/utils/CornerstoneViewportDownloadForm.tsx#L8).
+
 ## Commands
 
 These commands are available from the root directory. Each project directory

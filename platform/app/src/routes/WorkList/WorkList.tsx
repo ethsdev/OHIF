@@ -149,8 +149,11 @@ function WorkList({
   const onPageNumberChange = newPageNumber => {
     const oldPageNumber = filterValues.pageNumber;
     const rollingPageNumberMod = Math.floor(101 / filterValues.resultsPerPage);
+
     const rollingPageNumber = oldPageNumber % rollingPageNumberMod;
+
     const isNextPage = newPageNumber > oldPageNumber;
+
     const hasNextPage = Math.max(rollingPageNumber, 1) * resultsPerPage < numOfStudies;
 
     if (isNextPage && !hasNextPage) {

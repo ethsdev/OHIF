@@ -26,7 +26,8 @@ const StudyListFilter = ({
       ...sortingValues,
     });
   };
-  const isSortingEnabled = numOfStudies > 0 && numOfStudies <= 100;
+  // const isSortingEnabled = numOfStudies > 0 && numOfStudies <= 100;
+  const isSortingEnabled = true;
 
   return (
     <React.Fragment>
@@ -97,7 +98,7 @@ const StudyListFilter = ({
             isSortingEnabled={isSortingEnabled}
           />
         </div>
-        {numOfStudies > 100 && (
+        {/* {numOfStudies > 100 && (
           <div className="container m-auto">
             <div className="bg-primary-main rounded-b py-1 text-center text-base">
               <p className="text-white">
@@ -105,7 +106,7 @@ const StudyListFilter = ({
               </p>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </React.Fragment>
   );

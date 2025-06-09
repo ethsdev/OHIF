@@ -37,24 +37,15 @@ const toolbarButtons: Button[] = [
       groupId: 'MoreTools',
     },
   },
-  // {
-  //   id: 'WindowLevel',
-  //   uiType: 'ohif.toolButton',
-  //   props: {
-  //     icon: 'tool-zoom',
-  //     label: 'WindowLevel',
-  //     tooltip: 'WindowLeve Tool',
-  //     commands: setToolActiveToolbar,
-  //     evaluate: [
-  //       'evaluate.cornerstoneTool',
-  //       // {
-  //       //   name: 'evaluate.viewport.supported',
-  //       //   unsupportedViewportTypes: ['video'],
-  //       // },
-  //     ],
-  //   },
-  // },
-   {
+  {
+    id: 'RotateRightGroup',
+    uiType: 'ohif.toolButtonList',
+    props: {
+      buttonSection: 'rotateRightSection',
+      groupId: 'RotateRightGroup',
+    },
+  },
+  {
     id: 'WindowLevelGroup',
     uiType: 'ohif.toolButtonList',
     props: {

@@ -90,12 +90,15 @@ function modeFactory({ modeConfiguration }) {
       // Init Default and SR ToolGroups
       initToolGroups(extensionManager, toolGroupService, commandsManager);
 
+      // Toolbar Menus
       toolbarService.addButtons(toolbarButtons);
       toolbarService.createButtonSection('primary', [
         'Pan',
         'WindowLevelGroup',
         'ZoomGroup',
         'MeasurementTools',
+        'ArrowAnnotate',
+        'RotateRightGroup',
         'Layout',
         'CineGroup',
         'Crosshairs',
@@ -104,10 +107,10 @@ function modeFactory({ modeConfiguration }) {
         'MoreTools',
       ]);
 
+      // Each Menu Lists
       toolbarService.createButtonSection('measurementSection', [
         'Length',
         'Bidirectional',
-        'ArrowAnnotate',
         'Angle',
         'CobbAngle',
         'EllipticalROI',
@@ -116,6 +119,7 @@ function modeFactory({ modeConfiguration }) {
         'PlanarFreehandROI',
         'SplineROI',
         'LivewireContour',
+        'CalibrationLine',
       ]);
 
       toolbarService.createButtonSection('windowLevelSection', [
@@ -129,6 +133,11 @@ function modeFactory({ modeConfiguration }) {
         'Magnify',
       ]);
 
+      toolbarService.createButtonSection('rotateRightSection', [
+        'rotate-right',
+        'flipHorizontal',
+      ]);
+
       toolbarService.createButtonSection('cineSection', [
         'Cine',
         'StackScroll',
@@ -136,17 +145,13 @@ function modeFactory({ modeConfiguration }) {
 
       toolbarService.createButtonSection('moreToolsSection', [
         'Reset',
-        'rotate-right',
-        'flipHorizontal',
         'ImageSliceSync',
         'ReferenceLines',
         'ImageOverlayViewer',
         'Probe',
-        'CalibrationLine',
         'TagBrowser',
         'AdvancedMagnify',
         'UltrasoundDirectionalTool',
-
       ]);
 
       customizationService.setCustomizations({

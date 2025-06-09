@@ -161,9 +161,15 @@ yarn config set workspaces-experimental true
 yarn install
 ```
 
-#### Modification
+## Customization
+
+#### Camera Capture Modification
 
 To change default capture pixel value, modify [here](https://github.com/OHIF/Viewers/blob/master/extensions/cornerstone/src/utils/CornerstoneViewportDownloadForm.tsx#L8).
+
+#### Toolbar Menu Customization
+
+To hide or show toolbar buttons, modify [here](https://github.com/OHIF/Viewers/blob/master/modes/longitudinal/src/index.ts#L94).
 
 ## Commands
 

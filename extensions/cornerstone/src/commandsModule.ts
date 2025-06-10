@@ -850,7 +850,8 @@ function commandsModule({
       viewport.resetProperties?.();
       viewport.resetCamera();
       const { invert } = viewport.getProperties();
-      viewport.setProperties({ invert: !invert });
+      if(invert)
+        viewport.setProperties({ invert: !invert });
 
       viewport.render();
     },

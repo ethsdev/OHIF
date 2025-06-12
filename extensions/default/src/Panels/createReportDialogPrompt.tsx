@@ -14,7 +14,7 @@ export default function CreateReportDialogPrompt({
   const dataSources = extensionManager.getDataSourcesForUI();
   const ReportDialog = customizationService.getCustomization('ohif.createReportDialog');
 
-  const allowMultipleDataSources = window.config.allowMultiSelectExport;
+  // const allowMultipleDataSources = window.config.allowMultiSelectExport;
 
   return new Promise(function (resolve, reject) {
     uiDialogService.show({
@@ -22,7 +22,8 @@ export default function CreateReportDialogPrompt({
       title,
       content: ReportDialog,
       contentProps: {
-        dataSources: allowMultipleDataSources ? dataSources : undefined,
+        // dataSources: allowMultipleDataSources ? dataSources : undefined,
+        dataSources: dataSources,
         onSave: async ({ reportName, dataSource: selectedDataSource, series }) => {
           resolve({
             value: reportName,

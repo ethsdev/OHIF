@@ -24,6 +24,7 @@ import {
   createReportAsync,
   colorPickerDialog,
   callInputDialog,
+  callLabelAutocompleteDialog,
 } from '@ohif/extension-default';
 import { vec3, mat4 } from 'gl-matrix';
 import toggleImageSliceSync from './utils/imageSliceSync/toggleImageSliceSync';
@@ -545,14 +546,15 @@ function commandsModule({
     },
     arrowTextCallback: async ({ callback }) => {
       const labelConfig = customizationService.getCustomization('measurementLabels');
-      const renderContent = customizationService.getCustomization('ui.labellingComponent');
+      // const renderContent = customizationService.getCustomization('ui.labellingComponent');
 
-      const value = await callInputDialogAutoComplete({
-        uiDialogService,
-        labelConfig,
-        renderContent,
-      });
-      callback?.(value);
+      // const value = await callInputDialogAutoComplete({
+      //   uiDialogService,
+      //   labelConfig,
+      //   renderContent,
+      // });
+      // callback?.(value);
+      callLabelAutocompleteDialog(uiDialogService, callback, {}, labelConfig);
     },
 
     toggleCine: () => {

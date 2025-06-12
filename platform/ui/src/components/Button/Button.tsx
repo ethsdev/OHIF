@@ -6,11 +6,11 @@ import Tooltip from '../Tooltip/Tooltip';
 
 const sizeClasses = {
   [ButtonEnums.size.small]: 'h-[26px] text-[13px]',
-  [ButtonEnums.size.medium]: 'h-[32px] text-[14px]',
+  [ButtonEnums.size.medium]: 'h-[28px] text-[14px]',
 };
 
 const layoutClasses =
-  'box-content inline-flex flex-row items-center justify-center gap-[5px] justify center px-[10px] outline-none rounded';
+  'box-content inline-flex flex-row items-center justify-center gap-[5px] justify center px-2 outline-none rounded';
 
 const baseFontTextClasses = 'leading-[1.2] font-sans text-center whitespace-nowrap';
 
@@ -100,9 +100,11 @@ const Button = ({
   const finalClassName = classnames(
     layoutClasses,
     fontTextClasses[type],
-    disabled ? disabledClasses : enabledClasses[type],
+    // disabled ? disabledClasses : enabledClasses[type],
+    'cursor-pointer',
+    enabledClasses[type],
     sizeClasses[size],
-    children ? 'min-w-[32px]' : '', // minimum width for buttons with text; icon only button does NOT get a minimum width
+    children ? 'min-w-[28px]' : '', // minimum width for buttons with text; icon only button does NOT get a minimum width
     className
   );
 

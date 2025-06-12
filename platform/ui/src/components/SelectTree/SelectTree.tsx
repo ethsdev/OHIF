@@ -48,8 +48,8 @@ export class SelectTree extends Component<PropType> {
     const treeItems = this.getTreeItems();
 
     return (
-      <div className="max-h-80 w-80 text-base leading-7">
-        <div className="bg-primary-dark relative flex max-h-80 w-full flex-col overflow-hidden rounded-lg border-0 text-white outline-none drop-shadow-lg focus:outline-none">
+      <div className="max-h-80 text-base leading-7">
+        <div className="bg-primary-dark relative flex max-h-80 w-full flex-col overflow-hidden border-0 text-white outline-none drop-shadow-lg focus:outline-none">
           {this.headerItem()}
 
           {this.props.items.length > 0 && (
@@ -170,9 +170,9 @@ export class SelectTree extends Component<PropType> {
     const inputLeftPadding = this.props.items.length > 0 ? 'pl-8' : 'pl-4';
 
     return (
-      <div className="flex flex-col justify-between border-b-2 border-solid border-black p-0.5">
+      <div className="flex flex-col justify-between">
         {this.props.searchEnabled && (
-          <div className="flex w-full flex-col">
+          <div className="flex w-full flex-col p-0.5">
             {this.props.items.length > 0 && (
               <div className="absolute mt-2 mr-2.5 mb-3 ml-3 h-4 w-4">
                 <Icons.Search fill="#a3a3a3" />
@@ -181,7 +181,7 @@ export class SelectTree extends Component<PropType> {
             <input
               data-cy="input-annotation"
               type="text"
-              className={`border-primary-main border-primary-main appearance-none rounded border bg-black py-2 pr-3 text-sm leading-tight shadow transition duration-300 hover:border-gray-500 focus:border-gray-500 focus:outline-none ${inputLeftPadding}`}
+              className={`border-primary-main border-primary-main appearance-none rounded border bg-black py-1 px-2 h-7 text-sm leading-tight shadow transition duration-300 hover:border-gray-500 focus:border-gray-500 focus:outline-none`}
               placeholder={this.props.items.length > 0 ? 'Search labels' : 'Enter label'}
               autoFocus={this.props.autoFocus}
               onChange={this.searchLocations}
@@ -191,7 +191,16 @@ export class SelectTree extends Component<PropType> {
           </div>
         )}
         {this.props.items.length === 0 && (
-          <div className="flex justify-end py-3">
+          <div className="flex justify-end gap-x-2 pt-4">
+            {/* <Button
+              disabled={this.state.searchTerm === ''}
+              key={0}
+              name="cancel"
+              type={ButtonEnums.type.secondary}
+              onClick={() => {}}
+            >
+              Cancel
+            </Button> */}
             <Button
               disabled={this.state.searchTerm === ''}
               key={0}

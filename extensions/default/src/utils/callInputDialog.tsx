@@ -1,7 +1,8 @@
 import React from 'react';
 import { setAnnotationLabel } from '@cornerstonejs/tools/utilities';
 import { annotation } from '@cornerstonejs/tools';
-import { LabellingFlow } from '@ohif/ui-next';
+// import { LabellingFlow } from '@ohif/ui-next';
+import { LabellingFlow as LabellingFlow2 } from '@ohif/ui';
 import { InputDialog } from '@ohif/ui-next';
 
 interface InputDialogDefaultProps {
@@ -86,11 +87,47 @@ export async function callInputDialog({
   return value;
 }
 
+export function callLabelAutocompleteDialog(uiDialogService, callback, dialogConfig, labelConfig) {
+  const exclusive = labelConfig ? labelConfig.exclusive : false;
+  const dropDownItems = labelConfig ? labelConfig.items : [];
+
+  const { validateFunc = value => true } = dialogConfig;
+
+  const labellingDoneCallback = value => {
+    if (typeof value === 'string') {
+      if (typeof validateFunc === 'function' && !validateFunc(value)) {
+        return;
+      }
+      callback(value, 'save');
+    } else {
+      callback('', 'cancel');
+    }
+    // uiDialogService.dismiss({ id: 'select-annotation' });
+  };
+
+  uiDialogService.show({
+    id: 'select-annotation',
+    title: 'Annotation',
+    shouldCloseOnEsc: true,
+    centralize: true,
+    isDraggable: false,
+    showOverlay: true,
+    content: LabellingFlow2,
+    contentProps: {
+      labellingDoneCallback: labellingDoneCallback,
+      measurementData: { label: '' },
+      componentClassName: {},
+      labelData: dropDownItems,
+      exclusive: exclusive,
+    },
+  });
+}
+
 export async function callInputDialogAutoComplete({
   measurement,
   uiDialogService,
   labelConfig,
-  renderContent = LabellingFlow,
+  renderContent = LabellingFlow2,
   element,
 }) {
   const exclusive = labelConfig ? labelConfig.exclusive : false;

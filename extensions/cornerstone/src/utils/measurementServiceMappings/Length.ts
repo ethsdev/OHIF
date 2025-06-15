@@ -4,6 +4,7 @@ import { getIsVisible } from './utils/getIsVisible';
 import getSOPInstanceAttributes from './utils/getSOPInstanceAttributes';
 import { utils } from '@ohif/core';
 import { config } from '@cornerstonejs/tools/annotation';
+import { getCalibrationScale } from '../../tools/CalibrationLineTool';
 
 const Length = {
   toAnnotation: measurement => {},
@@ -62,6 +63,28 @@ const Length = {
     }
 
     const { points, textBox } = data.handles;
+
+    const calibrationScale = getCalibrationScale(referencedImageId);
+    if (calibrationScale && calibrationScale !== 1) {
+      console.log(`Applying calibration scale ${calibrationScale} to length measurement for image ${referencedImageId}`);
+      if (data.cachedStats) {
+        Object.keys(data.cachedStats).forEach(targetId => {
+          const targetStats = data.cachedStats[targetId];
+          if (targetStats.length !== undefined) {
+            if (!targetStats._calibrationScaleApplied) {
+              const originalLength = targetStats.length;
+              targetStats.length = targetStats.length * calibrationScale;
+              targetStats._calibrationScaleApplied = calibrationScale;
+              console.log(`Length measurement: ${originalLength}mm -> ${targetStats.length}mm (scale: ${calibrationScale})`);
+            } else {
+              console.log(`Calibration scale already applied (${targetStats._calibrationScaleApplied}) to length measurement, skipping`);
+            }
+          }
+        });
+      }
+    } else if (calibrationScale === null) {
+      console.log(`No calibration scale found for image ${referencedImageId}`);
+    }
 
     const mappedAnnotations = getMappedAnnotations(annotation, displaySetService);
 

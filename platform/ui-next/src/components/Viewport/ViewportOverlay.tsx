@@ -17,7 +17,16 @@ const classes = {
   bottomLeft: 'overlay-bottom left-viewport',
 };
 
-function ViewportOverlay({ topLeft, topRight, bottomRight, bottomLeft, color = 'text-highlight' }) {
+function convertTo12Hour(timeStr) {
+  const hours = parseInt(timeStr.slice(0, 2), 10);
+  const minutes = timeStr.slice(2, 4);
+  const period = hours >= 12 ? 'PM' : 'AM';
+  const displayHour = hours % 12 === 0 ? 12 : hours % 12;
+
+  return `${displayHour}:${minutes} ${period}`;
+}
+
+function ViewportOverlay({ topLeft, topRight, bottomRight, bottomLeft, color = 'text-highlight', seriesTime }) {
   const overlay = 'absolute pointer-events-none viewport-overlay';
 
   return (
@@ -26,7 +35,13 @@ function ViewportOverlay({ topLeft, topRight, bottomRight, bottomLeft, color = '
         data-cy="viewport-overlay-top-left"
         className={classNames(overlay, classes.topLeft)}
       >
+        <div className='flex gap-x-1'>
         {topLeft}
+        {
+          seriesTime && convertTo12Hour(seriesTime)
+        }
+
+        </div>
       </div>
       <div
         data-cy="viewport-overlay-top-right"
@@ -58,6 +73,7 @@ ViewportOverlay.propTypes = {
   bottomRight: PropTypes.node,
   bottomLeft: PropTypes.node,
   color: PropTypes.string,
+  seriesTime: PropTypes.string,
 };
 
 export { ViewportOverlay };

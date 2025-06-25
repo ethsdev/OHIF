@@ -6,6 +6,15 @@ import { ThumbnailList } from '../ThumbnailList';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../Accordion';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../Tooltip';
 
+function convertTo12Hour(timeStr) {
+  const hours = parseInt(timeStr.slice(0, 2), 10);
+  const minutes = timeStr.slice(2, 4);
+  const period = hours >= 12 ? 'PM' : 'AM';
+  const displayHour = hours % 12 === 0 ? 12 : hours % 12;
+
+  return `${displayHour}:${minutes} ${period}`;
+}
+
 const StudyItem = ({
   date,
   description,
@@ -23,6 +32,7 @@ const StudyItem = ({
   ThumbnailMenuItems,
   StudyMenuItems,
   StudyInstanceUID,
+  studyTime,
 }: withAppTypes) => {
   return (
     <Accordion
@@ -47,6 +57,9 @@ const StudyItem = ({
                   >
                     <div className="h-[18px] w-full max-w-[160px] overflow-hidden truncate whitespace-nowrap text-left text-white">
                       {date}
+                      <span className='pl-4'>
+                        {convertTo12Hour(studyTime)}
+                      </span>
                     </div>
                   </TooltipTrigger>
                 </Tooltip>

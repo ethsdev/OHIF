@@ -117,7 +117,7 @@ function modeFactory({ modeConfiguration }) {
         'RectangleROI',
         'CircleROI',
         'PlanarFreehandROI',
-        'SplineROI',
+        // 'SplineROI',
         'LivewireContour',
         'CalibrationLine',
       ]);
@@ -147,7 +147,7 @@ function modeFactory({ modeConfiguration }) {
         'Reset',
         'ImageSliceSync',
         'ReferenceLines',
-        'ImageOverlayViewer',
+        // 'ImageOverlayViewer',
         'Probe',
         'TagBrowser',
         'AdvancedMagnify',

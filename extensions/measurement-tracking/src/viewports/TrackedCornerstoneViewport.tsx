@@ -154,6 +154,8 @@ function TrackedCornerstoneViewport(
             } = measurement;
 
             sendTrackedMeasurementsEvent('SET_DIRTY', { SeriesInstanceUID });
+
+            // Arrow Annotate should be tracked like other measurements
             sendTrackedMeasurementsEvent('TRACK_SERIES', {
               viewportId,
               StudyInstanceUID,
@@ -171,7 +173,7 @@ function TrackedCornerstoneViewport(
         unsub();
       });
     };
-  }, [measurementService, sendTrackedMeasurementsEvent, viewportId, viewportGridService]);
+  }, [measurementService, sendTrackedMeasurementsEvent, viewportId, viewportGridService, trackedMeasurements]);
 
   const switchMeasurement = useCallback(
     direction => {

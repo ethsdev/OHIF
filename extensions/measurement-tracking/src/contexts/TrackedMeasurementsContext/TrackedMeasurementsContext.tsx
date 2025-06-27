@@ -23,6 +23,15 @@ const useTrackedMeasurements = () => useContext(TrackedMeasurementsContext);
 
 const SR_SOPCLASSHANDLERID = '@ohif/extension-cornerstone-dicom-sr.sopClassHandlerModule.dicom-sr';
 
+const trackedToolNames = [
+  'Length',
+  'Bidirectional',
+  'EllipticalROI',
+  'CircleROI',
+  'RectangleROI',
+  'ArrowAnnotate',
+];
+
 /**
  *
  * @param {*} param0
@@ -44,7 +53,7 @@ function TrackedMeasurementsContextProvider(
       const { viewportId: activeViewportId } = evt.data;
       const measurements = measurementService.getMeasurements();
       const trackedMeasurements = measurements.filter(
-        m => trackedStudy === m.referenceStudyUID && trackedSeries.includes(m.referenceSeriesUID)
+        m => trackedToolNames.includes(m.toolName) && trackedStudy === m.referenceStudyUID && trackedSeries.includes(m.referenceSeriesUID)
       );
 
       console.log(
@@ -92,7 +101,7 @@ function TrackedMeasurementsContextProvider(
       const { viewportId: activeViewportId } = evt.data;
       const measurements = measurementService.getMeasurements();
       const trackedMeasurements = measurements.filter(
-        m => trackedStudy === m.referenceStudyUID && trackedSeries.includes(m.referenceSeriesUID)
+        m => trackedToolNames.includes(m.toolName) && trackedStudy === m.referenceStudyUID && trackedSeries.includes(m.referenceSeriesUID)
       );
 
       // Jump to the last tracked measurement - most recent

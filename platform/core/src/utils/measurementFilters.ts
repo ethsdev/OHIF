@@ -67,7 +67,8 @@ const { POINT } = MeasurementService.VALUE_TYPES;
  * a value of type point, and having a referenced image
  */
 export function filterAdditionalFindings(dm) {
-  return dm.type === POINT && dm.referencedImageId;
+  // Exclude ArrowAnnotate from Additional Findings
+  return dm.type === POINT && dm.referencedImageId && dm.toolName !== 'ArrowAnnotate';
 }
 
 /**

@@ -88,7 +88,7 @@ async function promptSaveReport({ servicesManager, commandsManager, extensionMan
       if (study && study.series) {
         study.series.forEach(series => {
           if (series.instances && series.instances.length) {
-            displaySetService.makeDisplaySets(series.instances, { madeInClient: true });
+            displaySetService.makeDisplaySets(series.instances, { madeInClient: true, viewportType: 'stack' });
           }
         });
       }

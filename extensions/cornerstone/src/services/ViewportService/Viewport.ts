@@ -227,18 +227,14 @@ class ViewportInfo {
     // via cornerstoneViewportService
     let viewportData = this.getViewportData();
 
-    if (
-      viewportData.viewportType === Enums.ViewportType.ORTHOGRAPHIC ||
-      viewportData.viewportType === Enums.ViewportType.VOLUME_3D
-    ) {
-      viewportData = viewportData as VolumeViewportData;
-      return viewportData.data.some(
-        ({ displaySetInstanceUID: dsUID }) => dsUID === displaySetInstanceUID
-      );
+    if (!viewportData) {
+      return false;
     }
 
-    viewportData = viewportData as StackViewportData;
-    return viewportData.data.displaySetInstanceUID === displaySetInstanceUID;
+    // Both StackViewportData and VolumeViewportData have data as an array
+    return viewportData.data.some(
+      (data: any) => data.displaySetInstanceUID === displaySetInstanceUID
+    );
   }
 
   /**

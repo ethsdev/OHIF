@@ -19,11 +19,11 @@ const ThumbnailList = ({
   // Filter thumbnails into list items and thumbnail items
   const listItems = thumbnails?.filter(
     ({ componentType }) => componentType === 'thumbnailNoImage' || viewPreset === 'list'
-  );
+  ).sort((a, b) => a.seriesNumber - b.seriesNumber);
 
   const thumbnailItems = thumbnails?.filter(
     ({ componentType }) => componentType !== 'thumbnailNoImage' && viewPreset === 'thumbnails'
-  );
+  ).sort((a, b) => a.seriesNumber - b.seriesNumber);
 
   return (
     <div className="flex flex-col">

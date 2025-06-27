@@ -83,7 +83,7 @@ const Length = {
         });
       }
     } else if (calibrationScale === null) {
-      console.log(`No calibration scale found for image ${referencedImageId}`);
+      // console.log(`No calibration scale found for image ${referencedImageId}`);
     }
 
     const mappedAnnotations = getMappedAnnotations(annotation, displaySetService);

@@ -143,6 +143,7 @@ function PanelStudyBrowser({
           description: qidoStudy.StudyDescription,
           modalities: qidoStudy.ModalitiesInStudy,
           numInstances: Number(qidoStudy.NumInstances),
+          studyTime: qidoStudy.StudyTime,
         };
       });
 

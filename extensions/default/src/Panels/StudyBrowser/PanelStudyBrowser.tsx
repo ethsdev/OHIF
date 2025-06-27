@@ -403,6 +403,15 @@ function PanelStudyBrowser({
 
   const activeDisplaySetInstanceUIDs = viewports.get(activeViewportId)?.displaySetInstanceUIDs;
 
+  // Force refetch of study metadata on mount or when StudyInstanceUIDs/dataSource changes
+  useEffect(() => {
+    if (dataSource && dataSource.deleteStudyMetadataPromise && StudyInstanceUIDs) {
+      StudyInstanceUIDs.forEach(uid => {
+        if (uid) dataSource.deleteStudyMetadataPromise(uid);
+      });
+    }
+  }, [StudyInstanceUIDs, dataSource]);
+
   return (
     <>
       <>

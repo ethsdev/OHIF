@@ -76,7 +76,23 @@ async function promptSaveReport({ servicesManager, commandsManager, extensionMan
         servicesManager,
         getReport,
       });
-    } else if (promptResult.action === RESPONSE.CANCEL) {
+
+      // Clear study metadata cache so new SRs appear after navigation
+      if (dataSource.deleteStudyMetadataPromise) {
+        dataSource.deleteStudyMetadataPromise(StudyInstanceUID);
+      }
+
+      // Force reload of display sets for this study
+      const { DicomMetadataStore } = await import('@ohif/core');
+      const study = DicomMetadataStore.getStudy(StudyInstanceUID);
+      if (study && study.series) {
+        study.series.forEach(series => {
+          if (series.instances && series.instances.length) {
+            displaySetService.makeDisplaySets(series.instances, { madeInClient: true });
+          }
+        });
+      }
+    } else if (promptResult.action === PROMPT_RESPONSES.CANCEL) {
       // Do nothing
     }
 

@@ -125,7 +125,12 @@ export default function ModeRoute({
         params,
         query,
       });
-      setStudyInstanceUIDs(dataSource.getStudyInstanceUIDs({ params, query }));
+      const studyUIDs = dataSource.getStudyInstanceUIDs({ params, query });
+      const studyUIDsArray = Array.isArray(studyUIDs) ? studyUIDs : [studyUIDs];
+      if (dataSource.deleteStudyMetadataPromise) {
+        studyUIDsArray.forEach(uid => dataSource.deleteStudyMetadataPromise(uid));
+      }
+      setStudyInstanceUIDs(studyUIDsArray);
     };
 
     initializeDataSource(params, query);

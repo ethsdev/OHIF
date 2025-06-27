@@ -14,7 +14,7 @@ const { getSplitParam } = utils;
  * @returns array of subscriptions to cancel
  */
 export async function defaultRouteInit(
-  { servicesManager, studyInstanceUIDs, dataSource, filters, appConfig }: withAppTypes,
+  { servicesManager, studyInstanceUIDs, dataSource, filters, appConfig }: { servicesManager: any, studyInstanceUIDs: string[], dataSource: any, filters: any, appConfig: any },
   hangingProtocolId,
   stageIndex
 ) {
@@ -119,6 +119,9 @@ export async function defaultRouteInit(
     }
 
     promises.forEach(promise => {
+      if (promise.status !== 'fulfilled') {
+        return;
+      }
       const retrieveSeriesMetadataPromise = promise.value;
       if (!Array.isArray(retrieveSeriesMetadataPromise)) {
         return;
@@ -143,6 +146,19 @@ export async function defaultRouteInit(
     await Promise.allSettled(allPromises).then(applyHangingProtocol);
     startRemainingPromises(remainingPromises);
     applyHangingProtocol();
+
+    // --- FIX: Ensure display sets are created for all series in all studies ---
+    studyInstanceUIDs.forEach(StudyInstanceUID => {
+      const study = DicomMetadataStore.getStudy(StudyInstanceUID);
+      if (study && study.series) {
+        study.series.forEach(series => {
+          if (series.instances && series.instances.length) {
+            displaySetService.makeDisplaySets(series.instances, { madeInClient: true });
+          }
+        });
+      }
+    });
+    // --- END FIX ---
   });
 
   return unsubscriptions;

@@ -242,6 +242,7 @@ function CustomizableViewportOverlay({
       bottomLeft={getContent(bottomLeftCustomization, 'bottomLeftOverlayItem')}
       bottomRight={getContent(bottomRightCustomization, 'bottomRightOverlayItem')}
       seriesTime={displaySetProps?.displaySet?.SeriesTime}
+      // seriesTime={displaySetProps.displaySet.images[0]?.AcquisitionTime}
     />
   );
 }

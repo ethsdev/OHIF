@@ -171,6 +171,11 @@ To change default capture pixel value, modify [here](https://github.com/OHIF/Vie
 
 To hide or show toolbar buttons, modify [here](https://github.com/OHIF/Viewers/blob/master/modes/longitudinal/src/index.ts#L94).
 
+#### Displaying AcquisitionTime
+
+To display AcquisitionTime instead of SeriesTime,
+In `CustomizableViewportOverlay.tsx` file, enable this line `seriesTime={displaySetProps.displaySet.images[0]?.AcquisitionTime}`
+
 ## Commands
 
 These commands are available from the root directory. Each project directory

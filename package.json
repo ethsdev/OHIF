@@ -31,6 +31,7 @@
     "clean": "npx lerna run clean --stream",
     "clean:deep": "npx lerna run clean:deep --stream",
     "cli": "node ./platform/cli/src/index.js",
+    "postinstall": "patch-package",
     "build:ui:deploy-preview": "lerna run build:ui:deploy-preview --stream",
     "build:demo": "lerna run build:viewer:demo --stream",
     "build:package-all": "lerna run build:package --parallel --stream",
